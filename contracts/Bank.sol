@@ -7,12 +7,12 @@ contract Bank {
         balance = 0;
     }
 
-    function deposit(uint _value) public payable returns (uint) {
+    function deposit(uint _value) public payable returns (uint _balance) {
         balance += _value;
         return balance;
     }
 
-    function withdraw(uint _value) public payable returns (uint) {
+    function withdraw(uint _value) public payable returns (uint _balance) {
         if (balance < _value) { return; }
         balance -= _value;
         return balance;
