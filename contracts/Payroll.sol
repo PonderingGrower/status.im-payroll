@@ -1,9 +1,10 @@
 pragma solidity ^0.4.19;
 
+import './Owned.sol';
 import './PayrollInterface.sol';
 
 /* specification said nothing about contract being killable */
-contract Payroll is PayrollInterface {
+contract Payroll is PayrollInterface, Owned {
     struct Employee {
         uint256 id;
         address addr;
@@ -19,13 +20,10 @@ contract Payroll is PayrollInterface {
     /* mappings don't store length */
     uint256 public employees_count;
 
-    /* which account is allowed to manage this payroll */
-    address owner;
     /* can set exchange rate values */
     address oracle;
     
     /* MODIFIERS */
-    modifier isOwner() { require(msg.sender == owner); _; }
     modifier isOracle() { require(msg.sender == oracle); _; }
     modifier employeeIdExists(uint256 _id) { require(employees[_id].addr != address(0)); _; }
     modifier employeeAddrMissing(address _addr) { require(employeeIDs[_addr] == 0); _; }
@@ -33,8 +31,6 @@ contract Payroll is PayrollInterface {
     modifier senderIsEmployee() { require(employeeIDs[msg.sender] != 0); _; }
 
     function Payroll() public {
-        /* we the owner is whoever deployed this contract */
-        owner = msg.sender;
     }
 
     /* OWNER ONLY */
@@ -112,7 +108,7 @@ contract Payroll is PayrollInterface {
     }
 
     /* FALLBACK FUNCTION */
-    function payable () {
-        throw;
+    function () public {
+        assert(false);
     }
 }

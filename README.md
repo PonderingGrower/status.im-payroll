@@ -72,4 +72,5 @@ http://truffleframework.com/docs/advanced/configuration
 
 ## Video
 
-https://www.youtube.com/watch?v=8jI1TuEaTro&list=PLV1JDFUtrXpGvu8QHL9b78WYNSJsYNZsb
+https://www.youtube.com/watch?v=8jI1TuEaTro
+https://www.youtube.com/watch?v=rktHO5R8Y9c
