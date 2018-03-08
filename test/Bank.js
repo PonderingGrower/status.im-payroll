@@ -1,4 +1,5 @@
-var Bank = artifacts.require("./Bank.sol")
+const assertThrowsAsync = require('./assertThrows.js')
+const Bank = artifacts.require("./Bank.sol")
 
 contract('Bank', () => {
   it('should have empty balance on cration', async () => {
@@ -19,5 +20,14 @@ contract('Bank', () => {
     await bank.withdraw(200)
     balance = await bank.balance()
     assert.equal(balance, 300, 'balance was not decreased')
+  })
+
+  it('should fail to withdraw too much', async () => {
+    bank = await Bank.deployed()
+    await assertThrowsAsync(
+      async () => { await bank.withdraw(500) },
+      /VM Exception while processing transaction: revert/
+    )
+    assert.equal(balance, 300, 'balance was unchanged')
   })
 })

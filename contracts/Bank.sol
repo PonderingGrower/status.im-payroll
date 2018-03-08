@@ -13,7 +13,7 @@ contract Bank {
     }
 
     function withdraw(uint _value) public payable returns (uint _balance) {
-        if (balance < _value) { return; }
+        require(balance >= _value);
         balance -= _value;
         return balance;
     }
