@@ -110,4 +110,9 @@ contract Payroll is PayrollInterface {
     {
         /* TODO */
     }
+
+    /* FALLBACK FUNCTION */
+    function payable () {
+        throw;
+    }
 }
