@@ -35,17 +35,21 @@ contract Payroll is PayrollInterface, Owned {
 
     /* OWNER ONLY */
     function addEmployee(address _addr, address[] _allowedTokens, uint256 _initialYearlyEURSalary) public
-        isOwner employeeAddrMissing(_addr)
+        isOwner employeeAddrMissing(_addr) returns (uint256)
     {
-        employees[idsCounter++] = Employee({
-            id: idsCounter++,
+        /* increment first so we start from 1, not 0 */
+        idsCounter++;
+        Employee memory employee = Employee({
+            id: idsCounter,
             addr: _addr,
             allowedTokens: _allowedTokens,
             yearlyEURSalary: 0,
             initialYearlyEURSalary: _initialYearlyEURSalary
         });
+        employees[employee.id] = employee;
         employeeIDs[_addr] = idsCounter;
         employees_count++;
+        return idsCounter;
     }
 
     function setEmployeeSalary(uint256 _employeeId, uint256 _yearlyEURSalary) public
@@ -67,8 +71,14 @@ contract Payroll is PayrollInterface, Owned {
         return employees_count;
     }
 
+    function getAccountEmployee(address _addr) public constant
+        isOwner returns (uint256)
+    {
+        return employeeIDs[_addr];
+    }
+
     function getEmployee(uint256 _employeeId) public constant
-        returns (address)
+        isOwner returns (address)
     {
         return employees[_employeeId].addr;
     }

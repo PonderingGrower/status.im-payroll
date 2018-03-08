@@ -4,7 +4,7 @@ pragma solidity ^0.4.19;
 // Also lets assume we can 100% trust the exchange rate oracle
 contract PayrollInterface {
     /* OWNER ONLY */
-    function addEmployee(address _accountAddress, address[] _allowedTokens, uint256 _initialYearlyEURSalary) public;
+    function addEmployee(address _accountAddress, address[] _allowedTokens, uint256 _initialYearlyEURSalary) public returns (uint256);
     function setEmployeeSalary(uint256 _employeeId, uint256 _yearlyEURSalary) public;
     function removeEmployee(uint256 _employeeId) public;
 
