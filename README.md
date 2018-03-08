@@ -40,6 +40,10 @@ contract PayrollInterface {
   * https://ethereum.org/cli
   * https://www.ethereum.org/greeter
   * https://github.com/ethereum/wiki/wiki/White-Paper
+* ERC-223 Token
+  * https://github.com/ethereum/EIPs/issues/223
+  * https://github.com/Dexaran/ERC223-token-standard
+  * https://github.com/Dexaran/ERC223-token-standard/tree/Recommended#erc23-token-standard
 * Web3
   * https://github.com/ethereum/web3.js/
   * https://github.com/ethereum/web3.js/blob/master/example/contract.html
