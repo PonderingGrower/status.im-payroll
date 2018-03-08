@@ -23,5 +23,5 @@ contract PayrollInterface {
     //function payday() public; // only callable once a month
 
     /* ORACLE ONLY */
-    //function setExchangeRate(address token, uint256 EURExchangeRate) public; // uses decimals from token
+    function setExchangeRate(address _token, uint256 _EURExchangeRate) public; // uses decimals from token
 }

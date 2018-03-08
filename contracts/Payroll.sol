@@ -26,20 +26,20 @@ contract Payroll is PayrollInterface {
     
     /* MODIFIERS */
     modifier isOwner() { require(msg.sender == owner); _; }
+    modifier isOracle() { require(msg.sender == oracle); _; }
     modifier employeeIdExists(uint256 _id) { require(employees[_id].addr != address(0)); _; }
     modifier employeeAddrMissing(address _addr) { require(employeeIDs[_addr] == 0); _; }
     modifier isEmployee(address _addr) { require(employeeIDs[_addr] != 0); _; }
     modifier senderIsEmployee() { require(employeeIDs[msg.sender] != 0); _; }
 
-    function Payroll(address _oracle) public {
+    function Payroll() public {
         /* we the owner is whoever deployed this contract */
         owner = msg.sender;
-        oracle = _oracle;
     }
 
     /* OWNER ONLY */
     function addEmployee(address _addr, address[] _allowedTokens, uint256 _initialYearlyEURSalary) public
-        isOwner() employeeAddrMissing(_addr)
+        isOwner employeeAddrMissing(_addr)
     {
         employees[idsCounter++] = Employee({
             id: idsCounter++,
@@ -53,20 +53,20 @@ contract Payroll is PayrollInterface {
     }
 
     function setEmployeeSalary(uint256 _employeeId, uint256 _yearlyEURSalary) public
-        isOwner() employeeIdExists(_employeeId)
+        isOwner employeeIdExists(_employeeId)
     {
         employees[_employeeId].yearlyEURSalary = _yearlyEURSalary;
     }
 
     function removeEmployee(uint256 _employeeId) public
-        isOwner() employeeIdExists(_employeeId)
+        isOwner employeeIdExists(_employeeId)
     {
         delete employees[_employeeId];
         employees_count--;
     }
 
     function getEmployeeCount() public constant
-        isOwner() returns (uint256)
+        isOwner returns (uint256)
     {
         return employees_count;
     }
@@ -75,6 +75,12 @@ contract Payroll is PayrollInterface {
         returns (address)
     {
         return employees[_employeeId].addr;
+    }
+
+    function setOracle(address _oracle) public
+        isOwner
+    {
+        oracle = _oracle;
     }
 
     /* FUNDS */
@@ -99,5 +105,9 @@ contract Payroll is PayrollInterface {
     //function payday(); // only callable once a month
 
     /* ORACLE ONLY */
-    //function setExchangeRate(address token, uint256 EURExchangeRate); // uses decimals from token
+    function setExchangeRate(address _token, uint256 _EURExchangeRate) public
+        isOracle
+    {
+        /* TODO */
+    }
 }
