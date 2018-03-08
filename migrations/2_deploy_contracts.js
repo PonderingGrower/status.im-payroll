@@ -1,5 +1,5 @@
-var Greeter = artifacts.require("./Greeter.sol");
+var Bank = artifacts.require("./Bank.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(Greeter, 'wat');
+  deployer.deploy(Bank);
 };

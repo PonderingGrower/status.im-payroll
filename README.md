@@ -42,6 +42,11 @@ https://ethereum.org/cli
 https://www.ethereum.org/greeter
 https://github.com/ethereum/wiki/wiki/White-Paper
 
+## Web3
+
+https://github.com/ethereum/web3.js/
+https://github.com/ethereum/web3.js/blob/master/example/contract.html
+
 ## Geth
 
 https://github.com/ethereum/wiki/wiki/Ethereum-Development-Tutorial
