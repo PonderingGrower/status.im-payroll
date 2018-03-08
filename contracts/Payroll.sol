@@ -21,18 +21,20 @@ contract Payroll is PayrollInterface {
 
     /* which account is allowed to manage this payroll */
     address owner;
-    /* quick way to check if we have permissions to manage */
+    /* can set exchange rate values */
+    address oracle;
+    
+    /* MODIFIERS */
     modifier isOwner() { require(msg.sender == owner); _; }
-    /* quick way to check if employee with given ID exists */
     modifier employeeIdExists(uint256 _id) { require(employees[_id].addr != address(0)); _; }
     modifier employeeAddrMissing(address _addr) { require(employeeIDs[_addr] == 0); _; }
-    /* quick way to check if account is an employee */
     modifier isEmployee(address _addr) { require(employeeIDs[_addr] != 0); _; }
     modifier senderIsEmployee() { require(employeeIDs[msg.sender] != 0); _; }
 
-    function Payroll() public {
+    function Payroll(address _oracle) public {
         /* we the owner is whoever deployed this contract */
         owner = msg.sender;
+        oracle = _oracle;
     }
 
     /* OWNER ONLY */
@@ -75,12 +77,17 @@ contract Payroll is PayrollInterface {
         return employees[_employeeId].addr;
     }
 
+    /* FUNDS */
     /* I have absolutely no idea what this function is supposed to be */
     //function scapeHatch() public;
 
-    //function addFunds() payable public isOwner() {}
+    function addFunds() payable public isOwner() {}
 
     ///* Use approveAndCall or ERC223 tokenFallback */
+    /* As far as I can tell ERC223 is still not complete
+     * since this issue is still open:
+     * https://github.com/ethereum/EIPs/issues/223
+     */
     //function addTokenFunds() payable public;
 
     /* This doesn't seem like something that should be run within EVM... */
