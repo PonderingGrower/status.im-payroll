@@ -21,6 +21,14 @@ contract('Payroll', () => {
     assert.notEqual(addr, undefined, 'employee id was not returned')
   })
 
+  it('should change employee salary', async () => {
+    meta = await Payroll.deployed()
+    id = await meta.getAccountEmployee(web3.eth.accounts[1])
+    await meta.setEmployeeSalary(id.toNumber(), 500)
+    salary = await meta.getEmployeeSalary(id.toNumber())
+    assert.equal(salary.toNumber(), 500, 'employee salary was not changed')
+  })
+
   it('should remove employee', async () => {
     meta = await Payroll.deployed()
     id = await meta.getAccountEmployee(web3.eth.accounts[1])
@@ -30,12 +38,10 @@ contract('Payroll', () => {
     assert.equal(count.toNumber(), 0, 'employee was not removed')
   })
 
-  //it('should remove employee', async () => {
-  //  meta = await Payroll.deployed()
-  //  await assertThrowsAsync(
-  //    async () => { await meta.withdraw(500) },
-  //    /VM Exception while processing transaction: revert/
-  //  )
-  //  assert.equal(balance, 300, 'balance was unchanged')
-  //})
+  it('should fail when changing missing employee', async () => {
+    await assertThrowsAsync(
+      async () => { await meta.setEmployeeSalary(3, 1000) },
+      /VM Exception while processing transaction: revert/
+    )
+  })
 })

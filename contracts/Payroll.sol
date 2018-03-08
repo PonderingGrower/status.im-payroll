@@ -83,6 +83,12 @@ contract Payroll is PayrollInterface, Owned {
         return employees[_employeeId].addr;
     }
 
+    function getEmployeeSalary(uint256 _employeeId) public constant
+        isOwner returns (uint256)
+    {
+        return employees[_employeeId].yearlyEURSalary;
+    }
+
     function setOracle(address _oracle) public
         isOwner
     {
