@@ -37,28 +37,28 @@ contract PayrollInterface {
 # Links
 
 * Ethereum
-** https://ethereum.org/cli
-** https://www.ethereum.org/greeter
-** https://github.com/ethereum/wiki/wiki/White-Paper
+  * https://ethereum.org/cli
+  * https://www.ethereum.org/greeter
+  * https://github.com/ethereum/wiki/wiki/White-Paper
 * Web3
-** https://github.com/ethereum/web3.js/
-** https://github.com/ethereum/web3.js/blob/master/example/contract.html
+  * https://github.com/ethereum/web3.js/
+  * https://github.com/ethereum/web3.js/blob/master/example/contract.html
 * Geth
-** https://github.com/ethereum/wiki/wiki/Ethereum-Development-Tutorial
-** https://github.com/ethereum/go-ethereum/wiki
-** https://github.com/ethereum/go-ethereum/wiki/Contract-Tutorial
+  * https://github.com/ethereum/wiki/wiki/Ethereum-Development-Tutorial
+  * https://github.com/ethereum/go-ethereum/wiki
+  * https://github.com/ethereum/go-ethereum/wiki/Contract-Tutorial
 * Sodility
-** https://github.com/tomlion/vim-solidity
-** https://solidity.readthedocs.io/en/develop/using-the-compiler.html
-** https://solidity.readthedocs.io/en/latest/solidity-by-example.html
-** https://solidity.readthedocs.io/en/latest/solidity-in-depth.html
+  * https://github.com/tomlion/vim-solidity
+  * https://solidity.readthedocs.io/en/develop/using-the-compiler.html
+  * https://solidity.readthedocs.io/en/latest/solidity-by-example.html
+  * https://solidity.readthedocs.io/en/latest/solidity-in-depth.html
 * Web Editor
-** https://remix.ethereum.org/#optimize=false&version=soljson-v0.4.21+commit.dfe3193c.js
+  * https://remix.ethereum.org/#optimize=false&version=soljson-v0.4.21+commit.dfe3193c.js
 * Tools
-** http://truffleframework.com/docs/
-** http://truffleframework.com/docs/getting_started/project
-** http://truffleframework.com/docs/advanced/configuration
-** https://github.com/OpenZeppelin/zeppelin-solidity
+  * http://truffleframework.com/docs/
+  * http://truffleframework.com/docs/getting_started/project
+  * http://truffleframework.com/docs/advanced/configuration
+  * https://github.com/OpenZeppelin/zeppelin-solidity
 * Video
-** https://www.youtube.com/watch?v=8jI1TuEaTro
-* https://www.youtube.com/watch?v=rktHO5R8Y9c
+  * https://www.youtube.com/watch?v=8jI1TuEaTro
+  * https://www.youtube.com/watch?v=rktHO5R8Y9c
