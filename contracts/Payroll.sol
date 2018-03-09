@@ -106,14 +106,21 @@ contract Payroll is PayrollInterface, Owned {
     /* WARN: necessary to be able to add funds to a contract */
     function addFunds() payable public isOwner {}
 
-    ///* Use approveAndCall or ERC223 tokenFallback */
-    /* As far as I can tell ERC223 is still not complete
-     * since this issue is still open:
+    /* Use approveAndCall or ERC223 tokenFallback */
+    /**
+     * As far as I can tell ERC223 is still not complete/accepted
+     * since this issue is still open, but I might be wrong:
      * https://github.com/ethereum/EIPs/issues/223
-     */
+     *
+     * Also I'm not sure what you want me to do here.
+     * Is the Payroll contract supposed to inherit from ERC223 and run
+     * it's own type of tokens? I think I'd need to talk to someone
+     * well versed in smart contract so I can ask some questions because
+     * I'm still a bit unsure of some details.
+     **/
     //function addTokenFunds() payable public;
 
-    /* This doesn't seem like something that should be run within EVM... */
+    /* Reporting doesn't seem like something that should be run within EVM... */
     //function calculatePayrollBurnrate() public constant returns (uint256); // Monthly EUR amount spent in salaries
     //function calculatePayrollRunway() public constant returns (uint256); // Days until the contract can run out of funds
 
@@ -125,6 +132,21 @@ contract Payroll is PayrollInterface, Owned {
     function setExchangeRate(address _token, uint256 _EURExchangeRate) public
         isOracle
     {
-        /* TODO */
+        /** TODO
+         * Not really sure what I'm supposed to do here.
+         * That's probably because I don't really fully get how the
+         * tokens work in Ethereum contracts. The way I undestand it
+         * a contract can have it's own ledger of some kind of tokens,
+         * usually implemented using ERC20 or ERC223.
+         * But the addTokenFunds() method confuses me because it seems
+         * like it implies I could receive tokens from another contract
+         * into this contract, which seems weird, since I wouldn't need
+         * to keep track of that, that's the job of the contract that
+         * defines the specific token.
+         * Unless you wanted me to make this Payroll contract to also have
+         * it's own tokens for internal management of salaries.
+         * If that is the case than that's a bit above my understanding
+         * of smart contract for now.
+         **/
     }
 }
