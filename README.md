@@ -1,3 +1,7 @@
+# Description
+
+Solution to a recruitment task for Statis.im.
+
 # Task
 
 https://wiki.status.im/Hiring_Process#DevOps_Inclusion_Activity
@@ -63,6 +67,7 @@ contract PayrollInterface {
   * http://truffleframework.com/docs/getting_started/project
   * http://truffleframework.com/docs/advanced/configuration
   * https://github.com/OpenZeppelin/zeppelin-solidity
+  * https://github.com/carsenk/explorer
 * Video
   * https://www.youtube.com/watch?v=8jI1TuEaTro
   * https://www.youtube.com/watch?v=rktHO5R8Y9c

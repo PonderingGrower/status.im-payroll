@@ -11,8 +11,8 @@ contract PayrollInterface {
     function getEmployeeCount() public constant returns (uint256);
     function getEmployee(uint256 _employeeId) public constant returns (address employee); // Return all important info too
 
+    function escapeHatch() public;
     //function addFunds() payable public;
-    //function scapeHatch() public;
     //function addTokenFunds()? // Use approveAndCall or ERC223 tokenFallback
 
     //function calculatePayrollBurnrate() public constant returns (uint256); // Monthly EUR amount spent in salaries

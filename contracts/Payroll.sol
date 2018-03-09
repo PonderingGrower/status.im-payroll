@@ -96,10 +96,15 @@ contract Payroll is PayrollInterface, Owned {
     }
 
     /* FUNDS */
-    /* I have absolutely no idea what this function is supposed to be */
-    //function scapeHatch() public;
+    function escapeHatch() public
+        isOwner
+    {
+        /* way to recover any funds sent to this contract */
+        selfdestruct(owner);
+    }
 
-    function addFunds() payable public isOwner() {}
+    /* WARN: necessary to be able to add funds to a contract */
+    function addFunds() payable public isOwner {}
 
     ///* Use approveAndCall or ERC223 tokenFallback */
     /* As far as I can tell ERC223 is still not complete
@@ -121,10 +126,5 @@ contract Payroll is PayrollInterface, Owned {
         isOracle
     {
         /* TODO */
-    }
-
-    /* FALLBACK FUNCTION */
-    function () public {
-        assert(false);
     }
 }
